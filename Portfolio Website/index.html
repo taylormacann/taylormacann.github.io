@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructional Designer Portfolio - Pirate Quiz</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #334155; /* Dark slate gray text */
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+        /* Message box styling */
+        .message-box {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 15px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+        .message-box.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .message-box.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .message-box.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- Header and Navigation -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg p-4 md:p-6">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-bold mb-2 md:mb-0">Your Name's Portfolio</h1>
+            <nav>
+                <ul class="flex space-x-4 md:space-x-8 text-lg">
+                    <li><a href="#home" class="hover:text-blue-200 transition duration-300">Home</a></li>
+                    <li><a href="#about" class="hover:text-blue-200 transition duration-300">About</a></li>
+                    <li><a href="#portfolio" class="hover:text-blue-200 transition duration-300 font-semibold">Portfolio</a></li>
+                    <li><a href="#contact" class="hover:text-blue-200 transition duration-300">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-4 md:p-8">
+
+        <!-- Home Section -->
+        <section id="home" class="bg-white rounded-xl shadow-md p-6 md:p-10 mb-8 text-center">
+            <h2 class="text-4xl font-extrabold text-blue-800 mb-4">Welcome to My Instructional Design Portfolio!</h2>
+            <p class="text-lg text-gray-700 leading-relaxed">
+                Showcasing innovative learning experiences and engaging educational content.
+                Explore my projects to see how I transform complex information into clear,
+                actionable, and memorable learning modules.
+            </p>
+            <div class="mt-6">
+                <a href="#portfolio" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    View My Projects
+                </a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="bg-white rounded-xl shadow-md p-6 md:p-10 mb-8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4">About Me</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                I am an experienced instructional designer with a passion for creating effective and engaging learning solutions.
+                My expertise lies in analyzing learning needs, designing comprehensive curricula, developing interactive content,
+                and evaluating program effectiveness. I leverage various authoring tools and technologies to deliver high-quality
+                educational experiences across diverse platforms.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+                My goal is to empower learners through well-structured and accessible content that fosters knowledge retention and skill development.
+            </p>
+        </section>
+
+        <!-- Portfolio Section - Featuring Pirate Quiz -->
+        <section id="portfolio" class="bg-white rounded-xl shadow-md p-6 md:p-10 mb-8">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4">My Projects</h2>
+
+            <div class="project-item mb-10 border-b border-gray-200 pb-8 last:border-b-0">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Pirate Quiz: A Swashbuckling Learning Adventure</h3>
+                <p class="text-gray-600 mb-4">
+                    This interactive quiz module was designed to make learning about pirate history fun and engaging.
+                    It features multiple-choice questions, immediate feedback, and a thematic design to enhance the learner's experience.
+                    The module is fully responsive and accessible on various devices.
+                </p>
+                <div class="relative w-full overflow-hidden rounded-lg shadow-xl" style="padding-top: 56.25%;">
+                    <!-- 16:9 Aspect Ratio (56.25%) -->
+                    <!-- The iframe src points to the main HTML file of your Pirate Quiz project -->
+                    <iframe
+                        src="Pirate Quiz/story.html"
+                        class="absolute top-0 left-0 w-full h-full border-0 rounded-lg"
+                        allowfullscreen
+                        frameborder="0"
+                        title="Pirate Quiz Interactive Module"
+                    ></iframe>
+                </div>
+                <p class="text-sm text-gray-500 mt-4">
+                    *Note: This interactive module is embedded directly from its source files within the project directory.*
+                </p>
+            </div>
+
+            <!-- Placeholder for other projects -->
+            <div class="project-item mb-10 border-b border-gray-200 pb-8 last:border-b-0">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Project Title 2: Interactive Simulation</h3>
+                <p class="text-gray-600 mb-4">
+                    A brief description of your second project. This could be a simulation, a video-based course, or another interactive element.
+                </p>
+                <div class="bg-gray-100 h-64 flex items-center justify-center rounded-lg text-gray-400">
+                    [Placeholder for Project 2 - e.g., image, video, or another iframe]
+                </div>
+            </div>
+
+            <div class="project-item">
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">Project Title 3: E-learning Course Development</h3>
+                <p class="text-gray-600 mb-4">
+                    A brief description of your third project. Highlight the tools used, the target audience, and the learning objectives achieved.
+                </p>
+                <div class="bg-gray-100 h-64 flex items-center justify-center rounded-lg text-gray-400">
+                    [Placeholder for Project 3 - e.g., image, video, or another iframe]
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-white rounded-xl shadow-md p-6 md:p-10">
+            <h2 class="text-3xl font-bold text-blue-800 mb-4">Get in Touch</h2>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+                Feel free to reach out!
+            </p>
+            <!-- Formspree integration: action, method, and name attributes added -->
+            <form id="contactForm" action="https://formspree.io/f/mjkrqeng" method="POST" class="space-y-4">
+                <div>
+                    <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                    <input type="text" id="name" name="name" class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500" placeholder="Your Name" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500" placeholder="your.email@example.com" required>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-700 text-sm font-bold mb-2">Message:</label>
+                    <textarea id="message" name="message" rows="5" class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring-2 focus:ring-blue-500" placeholder="Your message..." required></textarea>
+                </div>
+                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                    Send Message
+                </button>
+            </form>
+            <!-- Message box for feedback -->
+            <div id="formMessage" class="message-box"></div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center p-4 mt-8 rounded-t-xl shadow-inner">
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contactForm');
+            const formMessage = document.getElementById('formMessage');
+
+            // Function to display messages
+            function showMessage(message, type) {
+                formMessage.textContent = message;
+                formMessage.className = `message-box show ${type}`; // Add type class for styling (success/error)
+                setTimeout(() => {
+                    formMessage.classList.remove('show');
+                }, 5000); // Hide after 5 seconds
+            }
+
+            contactForm.addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const formData = new FormData(contactForm);
+                const formUrl = contactForm.action;
+
+                try {
+                    const response = await fetch(formUrl, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json' // Important for Formspree AJAX
+                        }
+                    });
+
+                    if (response.ok) {
+                        showMessage('Thank you for your message! I will get back to you soon.', 'success');
+                        contactForm.reset(); // Clear the form
+                    } else {
+                        // Attempt to parse error message from Formspree response
+                        const errorData = await response.json();
+                        const errorMessage = errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Something went wrong. Please try again.';
+                        showMessage(`Error: ${errorMessage}`, 'error');
+                    }
+                } catch (error) {
+                    console.error('Submission error:', error);
+                    showMessage('Network error. Please check your connection and try again.', 'error');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
