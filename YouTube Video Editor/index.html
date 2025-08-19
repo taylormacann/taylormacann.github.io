@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Editor - Easy & Automatic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fab fa-youtube"></i> Video Editor</h1>
+                <p>Easy & Automatic YouTube Video Editing</p>
+            </div>
+            <div class="header-actions">
+                <button id="export-btn" class="btn btn-primary" disabled>
+                    <i class="fas fa-download"></i> Export Video
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section id="upload-section" class="upload-section">
+                <div class="upload-container">
+                    <div class="upload-zone" id="upload-zone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Upload Your Video</h3>
+                        <p>Drag & drop your video file here or click to browse</p>
+                        <input type="file" id="video-input" accept="video/*" hidden>
+                        <button class="btn btn-secondary" onclick="document.getElementById('video-input').click()">
+                            Choose File
+                        </button>
+                    </div>
+                    <div class="upload-info">
+                        <h4>Supported Formats</h4>
+                        <p>MP4, WebM, MOV, AVI (Max 500MB)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Editor Section -->
+            <section id="editor-section" class="editor-section" style="display: none;">
+                <!-- Video Preview -->
+                <div class="video-preview">
+                    <video id="video-player" controls>
+                        Your browser does not support the video tag.
+                    </video>
+                    <canvas id="video-canvas" style="display: none;"></canvas>
+                </div>
+
+                <!-- Timeline -->
+                <div class="timeline-container">
+                    <div class="timeline-controls">
+                        <button id="play-pause-btn" class="btn btn-round">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <span id="current-time">0:00</span>
+                        <div class="timeline" id="timeline">
+                            <div class="timeline-progress" id="timeline-progress"></div>
+                            <div class="timeline-handle" id="timeline-handle"></div>
+                        </div>
+                        <span id="total-time">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Editing Tools -->
+                <div class="editing-tools">
+                    <!-- Trim Controls -->
+                    <div class="tool-group">
+                        <h4><i class="fas fa-cut"></i> Trim Video</h4>
+                        <div class="trim-controls">
+                            <div class="input-group">
+                                <label>Start Time</label>
+                                <input type="number" id="trim-start" min="0" step="0.1" value="0">
+                            </div>
+                            <div class="input-group">
+                                <label>End Time</label>
+                                <input type="number" id="trim-end" min="0" step="0.1">
+                            </div>
+                            <button id="auto-trim-btn" class="btn btn-auto">
+                                <i class="fas fa-magic"></i> Auto Trim
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="tool-group">
+                        <h4><i class="fas fa-filter"></i> Filters & Effects</h4>
+                        <div class="filter-controls">
+                            <div class="filter-grid">
+                                <button class="filter-btn" data-filter="none">Original</button>
+                                <button class="filter-btn" data-filter="bright">Bright</button>
+                                <button class="filter-btn" data-filter="contrast">High Contrast</button>
+                                <button class="filter-btn" data-filter="vintage">Vintage</button>
+                                <button class="filter-btn" data-filter="bw">Black & White</button>
+                                <button class="filter-btn" data-filter="sepia">Sepia</button>
+                            </div>
+                            <button id="auto-enhance-btn" class="btn btn-auto">
+                                <i class="fas fa-magic"></i> Auto Enhance
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Text Overlay -->
+                    <div class="tool-group">
+                        <h4><i class="fas fa-font"></i> Text Overlay</h4>
+                        <div class="text-controls">
+                            <input type="text" id="overlay-text" placeholder="Enter text...">
+                            <div class="text-options">
+                                <select id="font-size">
+                                    <option value="24">24px</option>
+                                    <option value="32" selected>32px</option>
+                                    <option value="48">48px</option>
+                                    <option value="64">64px</option>
+                                </select>
+                                <input type="color" id="text-color" value="#ffffff">
+                                <button id="add-text-btn" class="btn btn-secondary">Add Text</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio Controls -->
+                    <div class="tool-group">
+                        <h4><i class="fas fa-volume-up"></i> Audio</h4>
+                        <div class="audio-controls">
+                            <div class="input-group">
+                                <label>Volume</label>
+                                <input type="range" id="volume-slider" min="0" max="200" value="100">
+                                <span id="volume-value">100%</span>
+                            </div>
+                            <button id="auto-balance-btn" class="btn btn-auto">
+                                <i class="fas fa-magic"></i> Auto Balance
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Processing Modal -->
+        <div id="processing-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <h3>Processing Video...</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <p id="progress-text">Applying effects...</p>
+            </div>
+        </div>
+
+        <!-- Success Modal -->
+        <div id="success-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <i class="fas fa-check-circle success-icon"></i>
+                <h3>Video Ready!</h3>
+                <p>Your video has been processed and is ready for download.</p>
+                <button id="download-btn" class="btn btn-primary">
+                    <i class="fas fa-download"></i> Download Video
+                </button>
+                <button id="close-success-btn" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
